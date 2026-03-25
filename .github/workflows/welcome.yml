@@ -2,5 +2,9 @@ name: Post Welcome comment
 on: 
     pull_request:
         types: [opened]
-permissións:
-    pull_request: write
+permissions:
+    pull-requests: write
+jobs:
+    welcome:
+        name: Post Welcome comment
+        runs-on: ubuntu-latest
