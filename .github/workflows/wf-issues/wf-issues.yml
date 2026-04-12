@@ -1,27 +1,17 @@
 name: Workflow for Open Issues
 on:
-    issues:
-        types: [opened]
+  issues:
+    types: [opened]
 jobs:
-    name: Workflow for Open Issues
-    comment:
-        runs-on: ubuntu-latest
-        steps:
-        - uses: actions/github-script@0.8.0
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            PR_URL: ${{ github.event.pull_request.html_url }}    
-          with:
-            #github-token: {% raw %}${{secrets.GITHUB_TOKEN}}{% endraw %}
-            script: |
-                github.issues.createComment({
-                issue_number: context.issue.number,
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                body: "👩🏼‍🦰 Moggy Este mensaje se ha creado automaticamente using GitHub Script!!!"
-                })
-                github.projects.createCard({
-                column_id: {{columnID}},
-                content_id: context.payload.issue.id,
-                content_type: "Issue"
-                });
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: "👩🏼‍🦰 Moggy Este mensaje se ha creado automáticamente usando GitHub Script!!!"
+            })
