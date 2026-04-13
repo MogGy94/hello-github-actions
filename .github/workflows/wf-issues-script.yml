@@ -10,6 +10,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+          
+      - name: Instalar dependencias de Actions
+        run: npm install @actions/core @actions/github
+        working-directory: .github/workflows/wf-issues
+        
       - name: Comentar en el issue script
         run: node .github/workflows/wf-issues/wf-issues.js
         env:
