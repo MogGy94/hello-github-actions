@@ -1,4 +1,4 @@
-name: Workflow for Open Issues
+name: Script Workflow for Open Issues
 on:
   issues:
     types: [opened]
