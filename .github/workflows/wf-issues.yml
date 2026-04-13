@@ -24,7 +24,7 @@ jobs:
         with:
           script: |
             github.projects.createCard({
-            column_id: {{columnID}},
+            column_id: 1234567,
             content_id: context.payload.issue.id,
             content_type: "Issue"
             });
