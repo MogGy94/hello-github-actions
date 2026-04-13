@@ -9,9 +9,7 @@ jobs:
       - name: Comment on new issue
         uses: actions/github-script@v6
         with:
-          #run: node .github/workflows/wf-issues/wf-issues.js ❌ no sirbe
           script: |
-            console.log("Funny Message🎅🏼")
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
