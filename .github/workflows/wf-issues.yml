@@ -8,13 +8,12 @@ jobs:
     steps:
       - uses: actions/github-script@v6
         with:
-          run: node .github/workflows/wf-issues/wf-issues.js
+          #run: node .github/workflows/wf-issues/wf-issues.js ❌ no sirbe
           script: |
             console.log("Funny Message"🎅🏼)
-          # script: |
-          #   github.rest.issues.createComment({
-          #     issue_number: context.issue.number,
-          #     owner: context.repo.owner,
-          #     repo: context.repo.repo,
-          #     body: "👩🏼‍🦰 Moggy Este mensaje se ha creado automáticamente usando GitHub Script!!!"
-          #   })
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: "👩🏼‍🦰 Moggy Este mensaje se ha creado automáticamente usando GitHub Script!!!"
+            })
