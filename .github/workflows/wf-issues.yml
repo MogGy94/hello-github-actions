@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/github-script@v6
         with:
-          run: node .github/workflows/wf-issues/comment-issue.js
+          run: node .github/workflows/wf-issues/wf-issues.js
           # script: |
           #   github.rest.issues.createComment({
           #     issue_number: context.issue.number,
