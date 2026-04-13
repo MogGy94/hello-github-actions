@@ -16,5 +16,17 @@ jobs:
               repo: context.repo.repo,
               body: "👩🏼‍🦰 Moggy Este mensaje se ha creado automáticamente usando GitHub Script!!!"
             })
+      - name: Add issue to project board
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+        if: contains(github.event.issue.labels.*.name, 'bug')
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.projects.createCard({
+            column_id: {{columnID}},
+            content_id: context.payload.issue.id,
+            content_type: "Issue"
+            });
 
       
