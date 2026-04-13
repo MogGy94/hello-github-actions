@@ -6,7 +6,8 @@ jobs:
   comment:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/github-script@v6
+      - name: Comment on new issue
+        uses: actions/github-script@v6
         with:
           #run: node .github/workflows/wf-issues/wf-issues.js ❌ no sirbe
           script: |
@@ -17,3 +18,16 @@ jobs:
               repo: context.repo.repo,
               body: "👩🏼‍🦰 Moggy Este mensaje se ha creado automáticamente usando GitHub Script!!!"
             })
+      - name: Add issue to project board
+        if: contains(github.event.issue.labels.*.name, 'bug')
+        uses: actions/github-script@0.8.0
+        with:
+          #github-token: {% raw %}${{secrets.GITHUB_TOKEN}}{% endraw %}
+          script: |
+            github.projects.createCard({
+            column_id: {{columnID}},
+            content_id: context.payload.issue.id,
+            content_type: "Issue"
+            });
+
+      
