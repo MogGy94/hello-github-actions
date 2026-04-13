@@ -17,8 +17,8 @@ jobs:
               body: "👩🏼‍🦰 Moggy Este mensaje se ha creado automáticamente usando GitHub Script!!!"
             })
       - name: Add issue to project board
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+        # env:
+        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
         if: contains(github.event.issue.labels.*.name, 'bug')
         uses: actions/github-script@v6
         with:
