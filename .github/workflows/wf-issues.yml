@@ -23,7 +23,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            github.projects.createCard({
+            github.rest.projects.createCard({
             column_id: 1234567,
             content_id: context.payload.issue.id,
             content_type: "Issue"
