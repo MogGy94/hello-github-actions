@@ -11,6 +11,6 @@ jobs:
         with:
           node-version: '20'
       - name: Comentar en el issue script
-        run: node .github/workflows/wf-issues/comment-issue.js
+        run: node .github/workflows/wf-issues/wf-issues.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
